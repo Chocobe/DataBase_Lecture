@@ -98,3 +98,15 @@
 	1. 약관 동의 -> ``Oracle Database 11gR2 Express Edition for Windows x64``를 다운로드
 
 1. ``Oracle Database EX`` 설치하기
+
+---
+
+1. SQL Developer 다운받기
+
+	1. ``www.oracle.com`` -> ``Downloads``
+
+	1. ``Developer Tools`` -> ``SQL Developer``
+
+	1. 약관 동의 -> ``Windows 32-bit/64bit`` 다운로드
+
+
