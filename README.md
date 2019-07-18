@@ -106,12 +106,22 @@
 
 ---
 
-1. SQL Developer 다운받기
+1. ``SQL Developer`` 다운받기
 
 	1. ``www.oracle.com`` -> ``Downloads``
 
 	1. ``Developer Tools`` -> ``SQL Developer``
 
 	1. 약관 동의 -> ``Windows 32-bit/64bit`` 다운로드
+
+1. ``SQL Developer`` 설치하기
+
+	1. 압축 해제
+
+	1. ``sqldeveloper.exe`` 실행
+
+	1. 경로설정 : JAVA 설치 폴더의 JDK 폴더 까지 (src파일 전까지)
+
+	1. 설치중 이전버전의 환경파일 불러오기가 뜨는데, ``아니오`` 선택
 
 :camel:[Top](#database)
