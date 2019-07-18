@@ -81,3 +81,20 @@
 	1. 유지보수
 
 :camel:[Top](#database)
+
+---
+---
+
+### Install Oracle Database EX
+
+1. ``Oracle Database EX`` 다운받기
+
+	1. ``www.oracle.com`` -> ``Downloads``
+
+	1. ``Database`` -> 아무 버전 선택
+
+	1. ``Oracle Database Express Edition``의 ``Oracle Database 11g Release 2 Express Edition for Windows 64``선택
+
+	1. 약관 동의 -> ``Oracle Database 11gR2 Express Edition for Windows x64``를 다운로드
+
+1. ``Oracle Database EX`` 설치하기
