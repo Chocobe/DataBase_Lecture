@@ -22,12 +22,12 @@ DROP TABLE emp;
 CREATE TABLE emp (
     empno       NUMBER(4) NOT NULL,
     ename       VARCHAR2(10),
-    jop         VARCHAR2(9),
+    job         VARCHAR2(9),
     mgr         NUMBER(4),
     hiredate    DATE,
     sal         NUMBER(7, 2),
     comm        NUMBER(7, 2),
-    depno       NUMBER(2)
+    deptno      NUMBER(2)
 );
 
 
@@ -135,3 +135,62 @@ CREATE TABLE BONUS(
     JOB     VARCHAR2(9),    -- 업무
     SAL     NUMBER,         -- 급여
     COMM    NUMBER);        -- 수당
+
+
+-- 출력창에 해당 테이블의 속성 출력하기
+DESC EMP;
+
+
+-- 산술 표현식
+SELECT ENAME, SAL, SAL + 300 FROM EMP;
+
+SELECT EMPNO, ENAME, SAL, COMM, SAL + COMM / 100 FROM EMP;
+
+
+-- NVL 함수 (NULL값을 특정한 값으로 변환하는 함수)
+SELECT ENAME, SAL, COMM, SAL * 12 * NVL(COMM, 0)
+    FROM EMP;
+    
+
+-- EMP 테이블에서 ENAME을 NAME으로, SAL을 SALARY로 출력하기
+SELECT ENAME AS NAME, SAL SALARY
+    FROM EMP;
+    
+    
+-- EMP 테이블에서 ENAME을 NAME으로, SAL * 12를 Annual Salary로 출력하기
+SELECT ENAME "NAME", SAL * 12 "Annual Salary"
+    FROM EMP;
+
+
+-- EMP 테이블에서 ENAME을 "성 명"으로, SAL * 12를 "급 여"로 출력하기
+SELECT ENAME "성 명", SAL * 12 "급 여"
+    FROM EMP;
+    
+    
+-- EMP 테이블에서 이름과 업무를 연결하여 출력하기
+SELECT ENAME || ' ' || JOP AS "EMPLYEES"
+    FROM EMP;
+    
+    
+-- EMP 테이블에서 이름과 업무를 "KING is a PRESIDENT" 형식으로 출력하기
+SELECT ENAME || ' ' || 'is a' || ' ' || JOP AS "Employees Details"
+    FROM EMP;
+    
+    
+-- EMP 테이블에서 이름과 연봉을 "KING: 1 Year salary = 60000"형식으로 출력하기
+SELECT ENAME || ': 1 Year salary = ' || SAL * 12 MONTHLY
+    FROM EMP;
+    
+    
+-- EMP 테이블에서 JOP을 모두 출력하기
+SELECT JOP FROM EMP;
+
+
+-- EMP 테이블에서 담당하고 있는 업무의 종류를 출력하기
+SELECT DISTINCT JOP
+    FROM EMP;
+    
+    
+-- 부서별로 담당하는 업무를 한번씩 출력하기
+SELECT DISTINCT DEPNO, JOP
+    FROM EMP;
