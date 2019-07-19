@@ -14,24 +14,6 @@ CREATE TABLE emp (
 );
 
 
--- 테이블 삭제하기
-DROP TABLE emp;
-
-
--- 테이블 생성하기 (직원 : emp)
-CREATE TABLE emp (
-    empno       NUMBER(4) NOT NULL,
-    ename       VARCHAR2(10),
-    job         VARCHAR2(9),
-    mgr         NUMBER(4),
-    hiredate    DATE,
-    sal         NUMBER(7, 2),
-    comm        NUMBER(7, 2),
-    deptno      NUMBER(2)
-);
-
-
-
 -- 튜플 삽입하기 (= 데이터 삽입하기)
 INSERT INTO emp
     VALUES(7369, 'SMITH', 'CLERK', 7902, '1908-12-17', 800, NULL, 20);
@@ -45,48 +27,50 @@ INSERT INTO emp
     1600, 300, 30);
 
 
--- 데이터 조회하기
-SELECT * FROM emp;
-
-
--- 예제 사용
+-- 튜플 삽입하기 (예제 사용)
 INSERT INTO emp VALUES
-        (7566, 'JONES',  'MANAGER',   7839,
+        (7566, 'JONES', 'MANAGER', 7839,
         TO_DATE('1981-04-02', 'YYYY-MM-DD'),  2975, NULL, 20);
         
 INSERT INTO emp VALUES
-        (7654, 'MARTIN', 'SALESMAN',  7698,
+        (7654, 'MARTIN', 'SALESMAN', 7698,
         TO_DATE('1981-09-28', 'YYYY-MM-DD'), 1250, 1400, 30);
         
 INSERT INTO EMP VALUES
-        (7698, 'BLAKE',  'MANAGER',   7839,
+        (7698, 'BLAKE', 'MANAGER', 7839,
         TO_DATE('1981-05-01', 'YYYY-MM-DD'),  2850, NULL, 30);
+        
 INSERT INTO EMP VALUES
-        (7782, 'CLARK',  'MANAGER',   7839,
+        (7782, 'CLARK', 'MANAGER', 7839,
         TO_DATE('1981-06-09', 'YYYY-MM-DD'),  2450, NULL, 10);
+        
 INSERT INTO EMP VALUES
-        (7788, 'SCOTT',  'ANALYST',   7566,
+        (7788, 'SCOTT', 'ANALYST', 7566,
         TO_DATE('1982-12-09', 'YYYY-MM-DD'), 3000, NULL, 20);
+        
 INSERT INTO EMP VALUES
-        (7839, 'KING',   'PRESIDENT', NULL,
+        (7839, 'KING', 'PRESIDENT', NULL,
         TO_DATE('1981-11-17', 'YYYY-MM-DD'), 5000, NULL, 10);
+        
 INSERT INTO EMP VALUES
-        (7844, 'TURNER', 'SALESMAN',  7698,
+        (7844, 'TURNER', 'SALESMAN', 7698,
         TO_DATE('1981-09-08', 'YYYY-MM-DD'),  1500, NULL, 30);
+        
 INSERT INTO EMP VALUES
-        (7876, 'ADAMS',  'CLERK',     7788,
+        (7876, 'ADAMS', 'CLERK', 7788,
         TO_DATE('1983-01-12', 'YYYY-MM-DD'), 1100, NULL, 20);
+        
 INSERT INTO EMP VALUES
-        (7900, 'JAMES',  'CLERK',     7698,
+        (7900, 'JAMES', 'CLERK', 7698,
         TO_DATE('1981-12-03', 'YYYY-MM-DD'),   950, NULL, 30);
+        
 INSERT INTO EMP VALUES
-        (7902, 'FORD',   'ANALYST',   7566,
+        (7902, 'FORD', 'ANALYST', 7566,
         TO_DATE('1981-12-03', 'YYYY-MM-DD'),  3000, NULL, 20);
+        
 INSERT INTO EMP VALUES
-        (7934, 'MILLER', 'CLERK',     7782,
+        (7934, 'MILLER', 'CLERK', 7782,
         TO_DATE('1982-01-23', 'YYYY-MM-DD'), 1300, NULL, 10);
-
-SELECT * FROM emp;
 
 
 -- 테이블 생성하기 (부서 : dept)
@@ -144,13 +128,17 @@ DESC EMP;
 -- 산술 표현식
 SELECT ENAME, SAL, SAL + 300 FROM EMP;
 
-SELECT EMPNO, ENAME, SAL, COMM, SAL + COMM / 100 FROM EMP;
+
+-- 산술 표현식에서 NULL이 포함된 경우, 값도 NULL
+SELECT EMPNO, ENAME, SAL, COMM, SAL + COMM / 100 
+    FROM EMP;
 
 
 -- NVL 함수 (NULL값을 특정한 값으로 변환하는 함수)
 SELECT ENAME, SAL, COMM, SAL * 12 * NVL(COMM, 0)
     FROM EMP;
     
+SELECT * FROM EMP;
 
 -- EMP 테이블에서 ENAME을 NAME으로, SAL을 SALARY로 출력하기
 SELECT ENAME AS NAME, SAL SALARY
