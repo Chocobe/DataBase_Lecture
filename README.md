@@ -5,6 +5,12 @@
 
 * [Install Oracle Database EX](#install-oracle-database-ex)
 
+
+* [Start](#start)
+
+
+* [19_07_19](#19_07_19)
+
 ---
 
 ### Database Plan
@@ -90,7 +96,7 @@
 
 ### Install Oracle Database EX
 
-#### 
+#### Oracle Database EX 설치
 
 1. ``Oracle Database EX`` 다운받기
 
@@ -105,6 +111,8 @@
 1. ``Oracle Database EX`` 설치하기
 
 ---
+
+#### SQL Developer 설치 (GUI 환경 만들기)
 
 1. ``SQL Developer`` 다운받기
 
@@ -161,13 +169,9 @@
 
 	1. 성공 멘트 확인
 
-
-
 1. ``SCOTT``계정의 권한 부여하기
 
 	1. ``GRANT CONNECT, RESOURCE TO SCOTT`` (접속권한, 테이블 생성 삭제 권한 부여)
-
-
 
 1. 사용자 계정 ``scott``으로 접속하기
 
@@ -186,8 +190,9 @@
 :camel:[Top](#database)
 
 ---
+---
 
-### 19.07.19
+### 19_07_19
 
 1. 테이블 생성하기
 
@@ -199,6 +204,6 @@
 
 	* ``TO_DATE('1981-02-20', 'YYYY-MM-DD')``
 
-
+1. 튜플 삭제하기
 
 :camel:[Top](#database)
