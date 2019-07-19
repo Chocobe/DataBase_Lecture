@@ -157,9 +157,17 @@
 
 1. 현재 접속된 계정은 DBA계정으로, 사용자를 생성해야 SQL 쿼리를 사용할 수 있다.
 
-	1. ``CREATE USER SCOTT IDENTIFIED BY TIGER (아이디 : scott, 비밀번호 : tiger)
+	1. ``CREATE USER SCOTT IDENTIFIED BY TIGER`` (아이디 : scott, 비밀번호 : tiger)
 
 	1. 성공 멘트 확인
+
+
+
+1. ``SCOTT``계정의 권한 부여하기
+
+	1. ``GRANT CONNECT, RESOURCE TO SCOTT`` (접속권한, 테이블 생성 삭제 권한 부여)
+
+
 
 1. 사용자 계정 ``scott``으로 접속하기
 
@@ -174,3 +182,23 @@
 	1. 테스트
 
 	1. ``상태 : 성공`` 확인 후, 접속
+
+:camel:[Top](#database)
+
+---
+
+### 19.07.19
+
+1. 테이블 생성하기
+
+1. 테이블 삭제하기
+
+1. 튜플 삽입하기
+
+1. ``DATE``타입의 데이터 입력하기
+
+	* ``TO_DATE('1981-02-20', 'YYYY-MM-DD')``
+
+
+
+:camel:[Top](#database)
