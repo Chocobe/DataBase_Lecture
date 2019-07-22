@@ -114,3 +114,41 @@ SELECT empno, ename, hiredate,
     LAST_DAY(hiredate) - hiredate L_Day
     FROM emp
     ORDER BY LAST_DAY(hiredate) - hiredate DESC;
+    
+    
+-- [67p] emp 테이블에서 10번 부서 중 입사 일자를 '1 May 1981' 과
+-- '1998년 1월 1일' 형태로 출력하기
+SELECT ename, hiredate, TO_CHAR(hiredate, 'fmDD"일"-Month-YY"년"') t_hiredate,
+    TO_CHAR(hiredate, 'YY"년" MM"월" DD"일"') t_kor
+    FROM emp
+    WHERE deptno = 10
+    ORDER BY hiredate DESC;
+    
+    
+-- [70p] emp 테이블에서 부서 20중 금여 앞에 $를 삽입하고
+-- 3자리마다 ,를 출력하기
+SELECT empno, ename, job, sal, TO_CHAR(sal, '$999,999')
+    FROM emp
+    where deptno = 20
+    ORDER BY sal DESC;
+    
+    
+-- [70p] 1981/12/3 에 입사한 사원의 정보를
+-- 이름, 업무, 입사일자를 출력하기
+SELECT ename, job, TO_CHAR(hiredate, 'YYYY/MM/DD') t_hire
+    FROM emp
+    WHERE hiredate = TO_DATE('1981/12/3', 'yyyy/mm/dd');
+    
+
+-- [71p] emp 테이블에서 job이 ANALYST 이면 급여 증가는 10%이고
+-- job이 CLERK 이면 급여 증가는 15%이고 job이 MANAGER 이면
+-- 급여 증가는 20%이다.
+-- 다른 업무에 대해서는 급여 증가가 없다.
+-- 사원번호, 이름, 업무, 급여, 증가된 급여를 출력하기
+SELECT deptno, ename, job, sal, DECODE(job, 
+    'ANALYST', sal * 1.1,
+    'CLERK', sal * 1.15,
+    'MANAGER', sal * 1.2, sal) d_sal
+    FROM emp
+    ORDER BY sal DESC;
+    
