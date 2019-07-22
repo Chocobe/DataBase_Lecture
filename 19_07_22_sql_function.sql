@@ -151,4 +151,3 @@ SELECT deptno, ename, job, sal, DECODE(job,
     'MANAGER', sal * 1.2, sal) d_sal
     FROM emp
     ORDER BY sal DESC;
-    
