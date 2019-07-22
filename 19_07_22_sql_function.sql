@@ -33,3 +33,84 @@ SELECT empno, ename, job, sal, deptno
     WHERE SUBSTR(ename, 1, 1) > 'K' AND
         SUBSTR(ename, 1, 1) < 'Y'
     ORDER BY ename;
+    
+    
+-- [55p] LPAD 함수
+SELECT ename, LPAD(ename, 15, '*'), sal, LPAD(sal, 10, '*')
+    FROM emp
+    WHERE deptno = 10;
+    
+    
+-- ROUND : 반올림
+-- TRUNC : 버림
+-- MOD   : 나머지
+-- POWER : 거듭제곱
+-- SQRT  : 제곱근
+-- SIGN  : 양수, 음수, 0 구분
+-- CHR   : ASCII 값에 해당하는 문자를 구함
+
+-- DUAL  : DATABASE에서 지원하는 임시 테이블을 사용
+
+-- [59p] ROUND : 반올림
+SELECT ROUND(456.789, 2) AS "소수점 2자리 반올림",
+    ROUND(456.789, 0) AS "소수점 0자리 반올림",
+    ROUND(456.789, -1) AS "정수부 1자리 반올림"
+    FROM DUAL;
+    
+    
+-- [59p] TRUNC : 버림
+SELECT TRUNC(456.789, 2),
+    TRUNC(456.789, 3),
+    TRUNC(456.789, 1),
+    TRUNC(456.789, 0),
+    TRUNC(456.789, -1),
+    TRUNC(456.789, -2)
+    FROM DUAL;
+    
+    
+-- [61p] emp 테이블에서 현재까지 근무일 수가 몇주 몇일 인가를 출력하기
+-- (일수가 많은 사람 순으로 출력)
+--SYSDATE : 오늘 날짜
+SELECT ename, hiredate, sysdate, sysdate - hiredate AS "Total Days",
+    TRUNC((sysdate - hiredate) / 7, 0) Weeks,
+    ROUND(MOD((sysdate - hiredate), 7), 0) DAYS,
+    (sysdate - hiredate) / 365 AS "총 근무일수"
+    FROM emp
+    order by sysdate - hiredate DESC;
+    
+    
+-- [63p] emp 테이블에서 10번 부서 중 입사 일자로부터 5개월이 지난 후
+-- 날짜를 계산하여 출력하기
+SELECT ename, hiredate, ADD_MONTHS(hiredate, 5) a_month
+    FROM emp
+    WHERE deptno = 10
+    ORDER BY HIREDATE DESC;
+    
+    
+-- [64p] emp 테이블에서 10번 부서 중 입사 일자로부터 돌아오는 금요일을
+-- 계산하여 출력하기
+SELECT ename, hiredate, 
+    NEXT_DAY(hiredate, 6) n_6,
+    NEXT_DAY(hiredate, 7) n_7
+    FROM emp
+    WHERE deptno = 10
+    ORDER BY hiredate DESC;
+    
+    
+-- [64p] emp 테이블에서 입사한 달의 근무 일수를 계산하여 출력하여라,
+-- 단 토요일과 일요일도 근무 일수에 포함된다.
+SELECT empno, ename, hiredate, 
+    NEXT_DAY(hiredate, '금요일') n_day,
+    LAST_DAY(hiredate) L_last,
+    LAST_DAY(hiredate) - hiredate L_day
+    FROM emp
+    ORDER BY LAST_DAY(hiredate) - hiredate DESC;
+    
+    
+-- [64p] emp 테이블에서 입사한 달의 근무 일수를 계산하여 출력하기
+-- (토요일과 일요일도 근무 일수에 포함된다)
+SELECT empno, ename, hiredate, 
+    LAST_DAY(hiredate) L_Last,
+    LAST_DAY(hiredate) - hiredate L_Day
+    FROM emp
+    ORDER BY LAST_DAY(hiredate) - hiredate DESC;
