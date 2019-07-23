@@ -43,6 +43,11 @@ SELECT e.ename "이름", e.hiredate "입사일", m.ename "관리자 이름", m.h
     FROM emp e, emp m
     WHERE e.mgr = m.empno AND e.hiredate < m.hiredate;
     
+SELECT e.ename "이름", e.hiredate "입사일", m.ename "관리자 이름", m.hiredate "관리자 입사일"
+    FROM emp e JOIN emp m
+    on e.mgr = m.empno
+    WHERE e.hiredate < m.hiredate;
+
     
 -- [7] emp 테이블에서 사원의 급여와 사원의 급여 양만큼 "*"를 출력하는
 -- SELECT문을 작성
