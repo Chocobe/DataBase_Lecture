@@ -1,7 +1,7 @@
 -- 연습문제 [96p]
 -- [1] emp 테이블에서 모든 사원에 대한 이름, 부서번호, 부서명을 출력하는
 -- SELECT 문장을 작성
-SELECT ename, empno, dname
+SELECT ename, emp.deptno, dname
     FROM emp, dept
     WHERE emp.deptno = dept.deptno;
     
@@ -19,6 +19,9 @@ SELECT ename, dname, loc
     FROM emp, dept
     WHERE emp.deptno = dept.deptno AND emp.COMM IS NOT NULL;
     
+SELECT ename, dname, loc
+    FROM emp JOIN dept
+    ON emp.deptno = dept.deptno AND emp.COMM IS NOT NULL;
 
 -- [4] emp 테이블에서 이름 중 L 자가 있는 사원에 대하여
 -- 이름, 업무, 부서명, 위치 를 출력하는 SELECT문 작성
@@ -28,9 +31,10 @@ SELECT ename, job, dname, loc
     
     
 -- [5] 보기와 똑같이 출력하기
-SELECT worker.ename Employee, worker.empno Emp#, manager.ename Manager, manager.empno
+SELECT worker.ename Employee, worker.empno Emp#, manager.ename Manager, manager.empno mgr#
     FROM emp worker, emp manager
-    WHERE worker.mgr = manager.empno(+);
+    WHERE worker.mgr = manager.empno(+)
+    ORDER BY worker.mgr;
 
 
 -- [6] emp 테이블에서 그들의 관리자 보다 먼저 입사한 사원에 대하여
