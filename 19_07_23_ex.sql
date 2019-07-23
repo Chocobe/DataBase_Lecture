@@ -28,10 +28,9 @@ SELECT ename, job, dname, loc
     
     
 -- [5] 보기와 똑같이 출력하기
--- (틀렸음)
 SELECT worker.ename Employee, worker.empno Emp#, manager.ename Manager, manager.empno
     FROM emp worker, emp manager
-    WHERE worker.mgr = manager.empno OR worker.mgr IS NULL AND manager.mgr IS NULL;
+    WHERE worker.mgr = manager.empno(+);
 
 
 -- [6] emp 테이블에서 그들의 관리자 보다 먼저 입사한 사원에 대하여
@@ -44,5 +43,5 @@ SELECT e.ename "이름", e.hiredate "입사일", m.ename "관리자 이름", m.h
 -- [7] emp 테이블에서 사원의 급여와 사원의 급여 양만큼 "*"를 출력하는
 -- SELECT문을 작성
 -- ("*"는 100을 의미)
-SELECT ename, RPAD('*', sal/100, '*') "Salary",SAL
+SELECT ename, RPAD('*', TRUNC(sal/100), '*') "Salary",SAL
     FROM emp;
