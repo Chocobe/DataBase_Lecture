@@ -264,3 +264,25 @@ SELECT ename, sal
     
 SELECT * FROM EMP;
 SELECT * FROM dept;
+
+
+-- [117p] 다중열 서브쿼리
+UPDATE emp
+    SET sal = 1500, comm = 300
+    WHERE empno = 7934;
+    
+SELECT ename, deptno, sal, comm
+    FROM emp
+    WHERE sal IN(
+        SELECT sal
+            FROM emp
+            WHERE deptno = 30)
+    AND NVL(comm, -1) IN(
+        SELECT NVL(comm, -1)
+            FROM emp
+            WHERE deptno = 30);
+            
+            
+UPDATE emp
+SET sal = 2450
+WHERE empno = 7900;
