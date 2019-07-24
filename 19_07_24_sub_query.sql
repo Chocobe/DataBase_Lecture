@@ -187,3 +187,80 @@ SELECT DISTINCT empno, ename, sal
         SELECT *
             FROM emp m
             WHERE e.empno = m.mgr);
+            
+            
+-- 연습문제 [114p]
+-- [1] SCOTT의 급여와 동일하거나 더 많이 받는 사원의
+-- 이름과 급여를 출력하기
+SELECT ename, sal
+    FROM emp
+    WHERE sal >= (
+        SELECT sal
+            FROM emp
+            WHERE ename = 'SCOTT');
+            
+            
+-- [2] 직급이 'CLERK'인 사람의
+-- 부서번호, 부서명을 출력하기
+SELECT deptno, dname
+    FROM dept
+    WHERE deptno IN (
+        SELECT deptno
+            FROM emp
+            WHERE job = 'CLERK');
+            
+            
+-- [3] 이름에 T를 포함하고 있는 사원들과 같은 부서에서 근무하는 사원의
+-- 사원번호, 이름 을 출력하기
+SELECT empno, ename
+    FROM emp
+    WHERE deptno IN(
+        SELECT deptno
+            FROM emp
+            WHERE ename LIKE '%T%');
+            
+-- [4] 부서 위치가 'DALLAS' 인 모든 사원의
+-- 이름, 부서번호 를 출력하기
+SELECT ename, empno
+    FROM emp
+    WHERE deptno IN(
+        SELECT deptno
+            FROM dept
+            WHERE LOC = 'DALLAS');
+            
+            
+-- [5] 'SALES' 부서의 모든 사원의
+-- 이름, 급여 출력하기
+SELECT ename, sal
+    FROM emp
+    WHERE deptno IN(
+        SELECT deptno
+            FROM dept
+            WHERE dname = 'SALES');
+
+
+-- [6] 'KING' 에게 보고하는 (=매니져가 'KING'인 사원) 모든 사원의
+-- 이름, 급여 출력하기
+SELECT ename, sal
+    FROM emp
+    WHERE mgr IN(
+        SELECT empno
+            FROM emp
+            WHERE ename = 'KING');
+    
+
+-- [7] 자신의 급여가 평균급여보다 많고 이름에 'S'가 들어가는
+-- 사원과 동일한 부서에서 근무하는 모든 사원의
+-- 이름, 급여 출력하기
+SELECT ename, sal
+    FROM emp
+    WHERE sal > 
+        (SELECT AVG(sal)
+            FROM emp) AND
+    deptno IN(
+        SELECT deptno
+            FROM emp
+            WHERE ename LIKE '%S%');
+    
+SELECT * FROM EMP;
+SELECT * FROM dept;
