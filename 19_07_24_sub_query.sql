@@ -223,7 +223,7 @@ SELECT empno, ename
 -- 이름, 부서번호 를 출력하기
 SELECT ename, empno
     FROM emp
-    WHERE deptno IN(
+    WHERE deptno = (
         SELECT deptno
             FROM dept
             WHERE LOC = 'DALLAS');
@@ -243,7 +243,7 @@ SELECT ename, sal
 -- 이름, 급여 출력하기
 SELECT ename, sal
     FROM emp
-    WHERE mgr IN(
+    WHERE mgr =(
         SELECT empno
             FROM emp
             WHERE ename = 'KING');
